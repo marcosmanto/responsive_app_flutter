@@ -10,6 +10,11 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return FractionallySizedBox(
+        heightFactor: .95,
+        alignment: Alignment.topCenter,
+        child: Container(
+          color: Colors.pink,
+        ));
   }
 }
