@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:responsive_app_flutter/pages/home_page.dart';
 
 void main() {
-  runApp(const PlacesApp());
+  runApp(const ProviderScope(child: PlacesApp()));
 }
 
 class PlacesApp extends StatelessWidget {

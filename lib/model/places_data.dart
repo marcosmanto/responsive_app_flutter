@@ -1,7 +1,7 @@
 import 'place.dart';
 
 class Places {
-  List<String> getStatesOfSouthIndia() {
+  static List<String> getStatesOfSouthIndia() {
     return [
       'Andhra Pradesh',
       'Karnataka',
@@ -11,7 +11,7 @@ class Places {
     ];
   }
 
-  List<Place> getPlaces() {
+  static List<Place> getPlaces() {
     return [
       const Place(
         image: 'assets/images/india_chennai_flower_market.png',
@@ -76,7 +76,7 @@ class Places {
     ];
   }
 
-  String getPlaceDescription() {
+  static String getPlaceDescription() {
     return 'Tamil Nadu is a state in the south-eastern part of the Indian Peninsula. '
         'Tamil Nadu is previously a part of the United Madras Province, '
         'which was later partitioned based on languages. '

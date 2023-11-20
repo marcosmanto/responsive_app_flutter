@@ -1,20 +1,36 @@
-import 'package:flutter/material.dart';
+import 'dart:math';
 
-class HomePage extends StatefulWidget {
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:responsive_app_flutter/model/places_data.dart';
+
+final selectedPlaceProvider = StateProvider((_) => Places.getPlaces()[0]);
+
+class HomePage extends ConsumerWidget {
   const HomePage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
-}
+  Widget build(BuildContext context, WidgetRef ref) {
+    final selectedPlace = ref.watch(selectedPlaceProvider);
 
-class _HomePageState extends State<HomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return FractionallySizedBox(
-        heightFactor: .95,
-        alignment: Alignment.topCenter,
-        child: Container(
-          color: Colors.pink,
-        ));
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(selectedPlace.title),
+      ),
+      body: ListView(
+        children: [
+          Image.asset(
+            selectedPlace.image,
+            height: 320,
+            fit: BoxFit.cover,
+          )
+        ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => ref.read(selectedPlaceProvider.notifier).state =
+            Places.getPlaces()[Random().nextInt(Places.getPlaces().length)],
+        child: Icon(Icons.sports_martial_arts_sharp),
+      ),
+    );
   }
 }
