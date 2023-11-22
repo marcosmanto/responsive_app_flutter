@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:responsive_app_flutter/model/place.dart';
 import 'package:responsive_app_flutter/model/places_data.dart';
+import 'package:responsive_app_flutter/pages/home_page.dart';
+import 'package:responsive_app_flutter/responsive_util.dart';
 
 class PlacesGallery extends StatelessWidget {
   final bool showHorizontalGridView;
@@ -45,6 +47,35 @@ class _GridItem extends ConsumerWidget {
       elevation: 6,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(6),
+      ),
+      child: InkWell(
+        child: GridTile(
+          footer: GridTileBar(
+            backgroundColor: Colors.black45,
+            title: Text(place.title),
+            subtitle: Text(place.subtitle),
+          ),
+          child: Ink.image(
+            image: AssetImage(place.image),
+            fit: BoxFit.cover,
+          ),
+        ),
+        onTap: () {
+          switch (getScreenSize(MediaQuery.of(context).size.width)) {
+            case ScreenSize.small:
+            case ScreenSize.medium:
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => Placeholder(),
+                ),
+              );
+              break;
+            case ScreenSize.large:
+              ref.read(selectedPlaceProvider.notifier).state = place;
+              break;
+          }
+        },
       ),
     );
   }
