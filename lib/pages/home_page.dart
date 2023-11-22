@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:responsive_app_flutter/model/places_data.dart';
 import 'package:responsive_app_flutter/responsive_util.dart';
+import 'package:responsive_app_flutter/widget/place_details.dart';
 import 'package:responsive_app_flutter/widget/places_gallery.dart';
 
 final selectedPlaceProvider = StateProvider((_) => Places.getPlaces()[0]);
@@ -70,15 +71,7 @@ Widget homePageLarge() {
                   ),
                   Expanded(
                     flex: 2,
-                    child: Center(
-                      child: Consumer(
-                        builder: (context, ref, child) => Image.asset(
-                          ref.read(selectedPlaceProvider).image,
-                          //height: 320,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
+                    child: PlaceDetails(),
                   )
                 ],
               ),

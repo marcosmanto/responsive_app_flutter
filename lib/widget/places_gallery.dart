@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:responsive_app_flutter/model/place.dart';
 import 'package:responsive_app_flutter/model/places_data.dart';
 import 'package:responsive_app_flutter/pages/home_page.dart';
+import 'package:responsive_app_flutter/pages/place_details_page.dart';
 import 'package:responsive_app_flutter/responsive_util.dart';
 
 class PlacesGallery extends StatelessWidget {
@@ -67,7 +68,7 @@ class _GridItem extends ConsumerWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => Placeholder(),
+                  builder: (context) => PlaceDetailsPage(),
                 ),
               );
               break;
