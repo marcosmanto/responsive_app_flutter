@@ -62,6 +62,7 @@ class _GridItem extends ConsumerWidget {
           ),
         ),
         onTap: () {
+          ref.read(selectedPlaceProvider.notifier).state = place;
           switch (getScreenSize(MediaQuery.of(context).size.width)) {
             case ScreenSize.small:
             case ScreenSize.medium:
@@ -73,7 +74,6 @@ class _GridItem extends ConsumerWidget {
               );
               break;
             case ScreenSize.large:
-              ref.read(selectedPlaceProvider.notifier).state = place;
               break;
           }
         },
