@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:responsive_app_flutter/model/places_data.dart';
 import 'package:responsive_app_flutter/responsive_util.dart';
+import 'package:responsive_app_flutter/widget/places_gallery.dart';
 
 final selectedPlaceProvider = StateProvider((_) => Places.getPlaces()[0]);
 final menuProvider = Provider((_) => Places.getStatesOfSouthIndia());
@@ -30,7 +31,7 @@ Widget homePageSmall() {
     drawer: Drawer(
       child: drawerBody(),
     ),
-    body: Placeholder(),
+    body: PlacesGallery(),
   );
 }
 
@@ -43,7 +44,7 @@ Widget homePageMedium() {
           flex: 2,
           child: drawerBody(),
         ),
-        Expanded(flex: 5, child: Placeholder())
+        Expanded(flex: 5, child: PlacesGallery())
       ],
     ),
   );
@@ -65,7 +66,7 @@ Widget homePageLarge() {
                 children: [
                   Expanded(
                     flex: 1,
-                    child: Placeholder(),
+                    child: PlacesGallery(showHorizontalGridView: true),
                   ),
                   Expanded(
                     flex: 2,
